@@ -13,7 +13,7 @@ type NFA = {
   symbols: string[];
   transitions: {
     [key: string]: {
-      [key: string]: number[];
+      [key: string]: string[];
     };
   };
 };
