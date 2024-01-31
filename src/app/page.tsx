@@ -130,7 +130,7 @@ export default function Home() {
         ) : data ? (
           <div className="mb-12">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+              <thead className="text-xs text-gray-700 bg-gray-50">
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     State/Symbol
@@ -154,11 +154,11 @@ export default function Home() {
                     </th>
                     {data.symbols.map((symbol, idx) => (
                       <td className="px-6 py-4" key={idx}>
-                        {JSON.stringify(
-                          data.transitions[state]
-                            ? data.transitions[state][symbol]
-                            : []
-                        )}
+                        {data.transitions[state]
+                          ? data.transitions[state][symbol]
+                            ? `{${data.transitions[state][symbol]?.join(", ")}}`
+                            : "∅"
+                          : "∅"}
                       </td>
                     ))}
                   </tr>
