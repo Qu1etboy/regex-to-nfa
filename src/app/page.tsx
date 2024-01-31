@@ -96,7 +96,7 @@ export default function Home() {
           Regular Expression
         </label>
         <p className="mb-2 text-xs text-gray-600">
-          Except only (, ), |, *, and . operations
+          Except only (, ), |, *, and . operators
         </p>
         <div className="flex gap-2">
           <input
