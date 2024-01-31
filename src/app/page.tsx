@@ -6,6 +6,8 @@ import axios from "axios";
 import { instance } from "@viz-js/viz";
 
 type NFA = {
+  start: string;
+  final: string;
   states: string[];
   symbols: string[];
   transitions: {
@@ -54,7 +56,11 @@ export default function Home() {
     });
 
     return `digraph {
+      rankdir=LR
+      node [shape=circle]
+      start -> ${nfa.start}
       ${transitions.join("\n")}
+      ${nfa.final} [shape=doublecircle]
     }`;
   }
 
