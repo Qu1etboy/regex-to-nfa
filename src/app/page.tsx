@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { instance } from "@viz-js/viz";
+import toast from "react-hot-toast";
 
 type NFA = {
   start: string;
@@ -31,14 +32,20 @@ export default function Home() {
       graphRef.current.innerHTML = "";
     }
 
-    const { data } = await axios.get(
-      `https://pacific-keen-variraptor.glitch.me/nfa?regex=${regex}`
-    );
-    console.log(data);
+    try {
+      const { data } = await axios.get(
+        `https://pacific-keen-variraptor.glitch.me/nfa?regex=${regex}`
+      );
+      console.log(data);
 
-    setData(data);
-    await drawGraph(data);
-    setLoading(false);
+      setData(data);
+      await drawGraph(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("There was an error from the server. Please try again.");
+      setLoading(false);
+    }
   }
 
   function dot(nfa: NFA) {
