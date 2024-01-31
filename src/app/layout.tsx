@@ -16,7 +16,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <footer className="text-sm text-center py-4">
+          <p>
+            Made with 🩷 by <a className="text-blue-500">6410406860 (Non)</a>,{" "}
+            <a className="text-blue-500">6410406711 (Toey)</a>,{" "}
+            <a className="text-blue-500">6410406649 (Pam)</a> for 01418334(66-2)
+            Compiler Techniques
+          </p>
+        </footer>
+      </body>
     </html>
   );
 }
