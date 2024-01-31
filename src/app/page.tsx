@@ -86,19 +86,22 @@ export default function Home() {
     <main className="container mx-auto px-2">
       <header className="text-center my-6">
         <h1 className="text-3xl font-bold">Regex to NFA Converter</h1>
-        <p>McNaughton-Yamada-Thompson algorithm</p>
+        <p className="text-gray-700">McNaughton-Yamada-Thompson algorithm</p>
       </header>
       <form onSubmit={regexToNFA} className="my-6">
         <label
           htmlFor="regex"
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="block text-sm font-medium text-gray-900"
         >
           Regular Expression
         </label>
+        <p className="mb-2 text-xs text-gray-600">
+          Except only (, ), |, *, and . operations
+        </p>
         <div className="flex gap-2">
           <input
             type="text"
-            placeholder="regex"
+            placeholder="e.g. (a|b)*a.b.c"
             id="regex"
             onChange={(e) => setRegex(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -174,7 +177,7 @@ export default function Home() {
             </table>
           </div>
         ) : (
-          <div className="text-center">
+          <div className="text-center text-sm text-gray-700">
             Enter regular expression to convert into NFA
           </div>
         )}
